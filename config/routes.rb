@@ -1,7 +1,8 @@
 SmRc70::Application.routes.draw do
-  resources :articles , :except => :show
-  match 'articles/:year' => 'articles#index' 
-        # :requirements => {:year => /\d{4}/}
+  match 'articles/:year' => 'articles#index' ,
+        :constraints => { :year => /\d{4}/ } 
+  resources :articles
+  
 
 
   # The priority is based upon order of creation:

@@ -1,29 +1,31 @@
 
+<% if @articles.empty? %>
 
-<% if @articles.nil? %>
- <h2>No search found </h2>
- <% else %>
+    <h2>No search found </h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% else %>
 
-<% @articles.each do |article| %>
-  <tr>
-    <td><%= article.name %></td>
-    <td><%= article.date.to_s(:db) %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.name %></td>
+        <td><%= article.date.to_s(:db) %></td>
+        <td><%= link_to 'Show', article %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
 <% end %>
-</table>
-
-<br /><% end %>
 
 <%= link_to 'New Article', new_article_path %>
