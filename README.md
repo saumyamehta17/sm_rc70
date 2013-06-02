@@ -1,2 +1,1 @@
-sm_rc70
-=======
+How to add custom Routes.. 
