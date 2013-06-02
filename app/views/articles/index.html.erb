@@ -1,4 +1,8 @@
-<h1>Listing articles</h1>
+
+
+<% if @articles.nil? %>
+ <h2>No search found </h2>
+ <% else %>
 
 <table>
   <tr>
@@ -20,6 +24,6 @@
 <% end %>
 </table>
 
-<br />
+<br /><% end %>
 
 <%= link_to 'New Article', new_article_path %>

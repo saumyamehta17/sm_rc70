@@ -3,10 +3,14 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
 
-    
-    date = Date.new(params[:year])
+    if(params[:year].blank?)
+    @articles = Article.all
+    else
+    date = Date.new(params[:year].to_i)
+    debugger
     @atricles = Article.where('date > ? AND date < ?',date.beginning_of_year, date.end_of_year )
     
+  end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
